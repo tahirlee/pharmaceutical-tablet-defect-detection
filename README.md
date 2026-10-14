@@ -170,19 +170,22 @@ python test.py --model efficient_v2_small --data_path datasets/pillQC --test_sub
 
 All results use a decision threshold of 0.40 with *defective* as the positive class. Values are percentages.
 
-### In-domain (PV test set) — selected models
+### In-domain (PV test set)
 
-| Model | Precision | Recall | F1 |
-|---|---:|---:|---:|
-| **EfficientNetV2-S** | 88.12 | 89.00 | **88.56** |
-| Xception | 83.49 | 91.00 | 87.08 |
-| Swin-B | – | – | 85.71 |
-| ShuffleNetV2 | 92.86 | 78.00 | 84.78 |
-| VGG-19 | – | – | 84.51 |
-| MobileNetV3-small | – | – | 71.28 |
-| AlexNet | – | – | 67.91 |
-
-EfficientNetV2-S reaches 88.50% accuracy. See Table 7 of the [paper](https://doi.org/10.3390/pharmaceutics18101287) for the full results of all 12 models and confidence intervals.
+| Model | Accuracy | Precision | Recall | F1 |
+|---|---:|---:|---:|---:|
+| AlexNet | 65.50 | 63.48 | 73.00 | 67.91 |
+| VGG-19 | 83.50 | 79.65 | 90.00 | 84.51 |
+| GoogLeNet | 84.50 | 91.57 | 76.00 | 83.06 |
+| ResNet-50 | 84.00 | 84.69 | 83.00 | 83.84 |
+| DenseNet-169 | 80.50 | 87.65 | 71.00 | 78.45 |
+| Xception | 86.50 | 83.49 | **91.00** | 87.08 |
+| DLA-34 | 81.00 | 81.63 | 80.00 | 80.81 |
+| ShuffleNetV2 | 86.00 | **92.86** | 78.00 | 84.78 |
+| MobileNetV3-small | 73.00 | 76.14 | 67.00 | 71.28 |
+| EfficientNetV2-S | **88.50** | 88.12 | 89.00 | **88.56** |
+| ViT-B/32 | 82.00 | 82.65 | 81.00 | 81.82 |
+| Swin-B | 86.50 | 91.01 | 81.00 | 85.71 |
 
 ### Cross-dataset (pillQC, no fine-tuning)
 
@@ -190,8 +193,8 @@ EfficientNetV2-S reaches 88.50% accuracy. See Table 7 of the [paper](https://doi
 |---|---:|---:|---:|---:|
 | AlexNet | 56.77 | 22.97 | 39.53 | 29.06 |
 | VGG-19 | 88.02 | 73.81 | 72.09 | 72.94 |
-| **GoogLeNet** | 89.58 | 78.05 | 74.42 | **76.19** |
-| ResNet-50 | 90.10 | 96.15 | 58.14 | 72.46 |
+| GoogLeNet | 89.58 | 78.05 | **74.42** | **76.19** |
+| ResNet-50 | 90.10 | **96.15** | 58.14 | 72.46 |
 | DenseNet-169 | 83.33 | 78.95 | 34.88 | 48.39 |
 | Xception | 88.54 | 83.87 | 60.47 | 70.27 |
 | DLA-34 | 86.46 | 79.31 | 53.49 | 63.89 |
@@ -201,24 +204,24 @@ EfficientNetV2-S reaches 88.50% accuracy. See Table 7 of the [paper](https://doi
 | ViT-B/32 | 54.17 | 27.72 | 65.12 | 38.89 |
 | Swin-B | 80.21 | 61.90 | 30.23 | 40.62 |
 
-### Computational efficiency (NVIDIA RTX 3060, batch size 1)
+### Computational efficiency
 
-| Model | Params (M) | GFLOPs | Median latency (ms) | Throughput (FPS) |
-|---|---:|---:|---:|---:|
-| AlexNet | 57.01 | 1.42 | 1.66 | **602.41** |
-| VGG-19 | 139.58 | 39.26 | 6.81 | 146.84 |
-| GoogLeNet | 5.60 | 3.02 | 15.35 | 65.15 |
-| ResNet-50 | 23.51 | 8.26 | 12.46 | 80.26 |
-| DenseNet-169 | 12.48 | 6.87 | 40.23 | 24.86 |
-| Xception | 20.81 | 9.19 | 11.86 | 84.32 |
-| DLA-34 | 15.27 | 6.18 | 7.99 | 125.16 |
-| ShuffleNetV2 | **1.26** | 0.30 | 12.54 | 79.74 |
-| MobileNetV3-small | 1.52 | **0.12** | 9.26 | 107.99 |
-| EfficientNetV2-S | 20.18 | 5.80 | 33.68 | 29.69 |
-| ViT-B/32 | 87.46 | 5.90 | 10.40 | 96.15 |
-| Swin-B | 86.74 | 20.44 | 41.19 | 24.28 |
+| Model | Params (M) | GFLOPs | Median latency (ms) | IQR (ms) | Throughput (FPS) |
+|---|---:|---:|---:|---:|---:|
+| AlexNet | 57.01 | 1.42 | **1.66** | **0.23** | **602.41** |
+| VGG-19 | 139.58 | 39.26 | 6.81 | 0.35 | 146.84 |
+| GoogLeNet | 5.60 | 3.02 | 15.35 | 8.07 | 65.15 |
+| ResNet-50 | 23.51 | 8.26 | 12.46 | 2.55 | 80.26 |
+| DenseNet-169 | 12.48 | 6.87 | 40.23 | 5.36 | 24.86 |
+| Xception | 20.81 | 9.19 | 11.86 | 2.80 | 84.32 |
+| DLA-34 | 15.27 | 6.18 | 7.99 | 1.67 | 125.16 |
+| ShuffleNetV2 | **1.26** | 0.30 | 12.54 | 3.10 | 79.74 |
+| MobileNetV3-small | 1.52 | **0.12** | 9.26 | 1.90 | 107.99 |
+| EfficientNetV2-S | 20.18 | 5.80 | 33.68 | 4.33 | 29.69 |
+| ViT-B/32 | 87.46 | 5.90 | 10.40 | 1.05 | 96.15 |
+| Swin-B | 86.74 | 20.44 | 41.19 | 2.97 | 24.28 |
 
-Throughput is computed as 1000 / median latency.
+Latency is the median (with IQR) over 500 single-image inference runs after 50 warm-up runs on an NVIDIA GeForce RTX 3060. Throughput is a theoretical single-image rate (1000 / median latency) and does not represent end-to-end industrial pipeline throughput.
 
 ---
 
@@ -251,4 +254,3 @@ The code in this repository is released under the [MIT License](LICENSE). Please
 ## Contact
 
 Tahir Mahmood — Division of Electronics and Electrical Engineering, Dongguk University, Seoul, Republic of Korea
-Corresponding author: Kang Ryoung Park, Dongguk University
