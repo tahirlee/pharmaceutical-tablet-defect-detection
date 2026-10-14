@@ -2,7 +2,7 @@
 
 [![Paper](https://img.shields.io/badge/Paper-Pharmaceutics%202026-blue)](https://www.mdpi.com/1999-4923/18/10/1287)
 [![DOI](https://img.shields.io/badge/DOI-10.3390%2Fpharmaceutics18101287-informational)](https://doi.org/10.3390/pharmaceutics18101287)
-[![Dataset](https://img.shields.io/badge/Dataset-Zenodo-green)](https://doi.org/10.5281/zenodo.22773411)
+[![Dataset](https://img.shields.io/badge/Dataset-Kaggle-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/tahirlee/pharmaceutical-tablets-dataset)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Official code for the paper:
@@ -111,7 +111,7 @@ python data_augmentation.py \
     --copies_per_image 2
 ```
 
-Each original image is copied unchanged and receives two mild variants (190 → 570 per class). Then point `Train` at the augmented folder (rename or symlink) and pass `--offline_augmented` when training. The released augmented set on Zenodo can be used instead.
+Each original image is copied unchanged and receives two mild variants (190 → 570 per class). Then point `Train` at the augmented folder (rename or symlink) and pass `--offline_augmented` when training. The released augmented set on Kaggle can be used instead.
 
 ### 2. Train
 
@@ -246,7 +246,7 @@ If you use this code or the PharmaVision dataset, please cite:
 
 ## License
 
-The code in this repository is released under the [MIT License](LICENSE). Please refer to the Zenodo record for the dataset's license terms.
+The code in this repository is released under the [MIT License](LICENSE). Please refer to the Kaggle dataset page for the dataset's license terms.
 
 ## Contact
 
